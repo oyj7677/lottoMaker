@@ -54,6 +54,8 @@ class MainFragment : Fragment() {
             }
         }
 
+        viewModel.initDatabase()
+
         return binding.root
     }
 
