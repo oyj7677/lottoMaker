@@ -1,9 +1,8 @@
 package com.example.lottomaker.retrofit
 
-import com.example.lottomaker.LottoData
+import com.example.lottomaker.model.LottoData
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface LottoApi {

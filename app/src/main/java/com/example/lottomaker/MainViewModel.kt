@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.lottomaker.model.LottoData
 import com.example.lottomaker.model.LottoDatabase
 import com.example.lottomaker.model.WinningNumber
 import com.example.lottomaker.retrofit.LottoApi
@@ -15,13 +16,12 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
-import org.w3c.dom.Text
 import kotlin.random.Random
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val db = LottoDatabase.getDatabase(application)
-    val lottoDao = db.lottoDao()
+    private val lottoDao = db.lottoDao()
     private var compositeDisposable = CompositeDisposable()
 
     private val _arrWinningNumberList = MutableLiveData<ArrayList<ArrayList<Int>>>()
@@ -30,8 +30,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _winningNumberList = MutableLiveData<ArrayList<Int>>()
     val winningNumberList: LiveData<ArrayList<Int>> = _winningNumberList
 
-    val createCnt = MutableLiveData<String>()
-//    val createCnt = MutableLiveData<String>()
+    val numberGroupCnt = MutableLiveData<String>()
 
     private val _selectNumber = MutableLiveData<ArrayList<Int>>()
     val selectNumber: LiveData<ArrayList<Int>> = _selectNumber
@@ -43,9 +42,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // cnt만큼 당첨 번호 생성
     fun createWinningNumberAll() {
-        // 랜덤 -> list
+
         val arrNumberList = arrayListOf<ArrayList<Int>>()
-        val cnt = createCnt.value?.toInt() ?: 1
+        val cnt = numberGroupCnt.value?.toInt() ?: 1
 
         for(i: Int in 0 until cnt) {
             val numberList = arrayListOf<Int>()
@@ -62,9 +61,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _arrWinningNumberList.value = arrNumberList
     }
 
-    // todo 선택 다이얼로그 -> 번호 공(?) 라디오 버튼 -> 최대 5개 -> 선택 번호 표시 -> 랜덤 번호 생성1 버튼을 클릭하여 선택된 번호 여부로 분기
-    fun createWinningNumberPart(selectNumberList: ArrayList<Int>, cnt: Int) {
+    fun createWinningNumberPart(selectNumberList: ArrayList<Int>) {
         val arrNumberList = arrayListOf<ArrayList<Int>>()
+        val cnt = numberGroupCnt.value?.toInt() ?: 1
 
         for(i: Int in 0 until cnt) {
             val numberList = arrayListOf<Int>()
@@ -122,7 +121,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         single.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ currentRound ->
-                // 방송에 나간 가장 마지막 라운드
                 if(postRound != currentRound) {
                     saveAllWinningNumber(postRound + 1, currentRound)
                 }

@@ -10,6 +10,8 @@ import org.jsoup.select.Elements
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Before
+import retrofit2.Retrofit
 import kotlin.random.Random
 
 /**
@@ -111,20 +113,19 @@ class ExampleUnitTest {
         mostSelectNumberList.sort()
     }
 
-    @Test
-    fun crawlingTest() {
-        val url = "https://dhlottery.co.kr/gameResult.do?method=byWin"
-        val doc = Jsoup.connect(url).timeout(10000).get()
-        val contentData : Elements = doc.select("div.win_result h4 strong")
-        println(contentData.text())
+
+    private lateinit var client: Retrofit
+    private lateinit var api: LottoApi
+
+    @Before
+    fun setup() {
+        client = RetrofitClient.getInstance()
+        api = client.create(LottoApi::class.java)
     }
 
     @SuppressLint("CheckResult")
     @Test
     fun retrofitTest() {
-        val client = RetrofitClient.getInstance()
-        val api = client.create(LottoApi::class.java)
-
         api.getWinningNumber(100)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -133,5 +134,13 @@ class ExampleUnitTest {
             },{
                 it.printStackTrace()
             })
+    }
+
+    @Test
+    fun getLastRound() {
+        val url = "https://dhlottery.co.kr/gameResult.do?method=byWin"
+        val doc = Jsoup.connect(url).timeout(10000).get()
+        val contentData : Elements = doc.select("div.win_result h4 strong")
+        println(contentData.text().replace("\\D".toRegex(), "").toInt())
     }
 }

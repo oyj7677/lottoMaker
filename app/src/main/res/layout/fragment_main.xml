@@ -7,7 +7,11 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.lottomaker.MainViewModel" />
+            type="com.example.lottomaker.MainViewModel"/>
+
+        <variable
+            name="view"
+            type="com.example.lottomaker.MainFragment"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,19 +46,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="1~5"
+                android:text="@={viewModel.numberGroupCnt}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="생성할 조합 수"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <Button
                 android:id="@+id/btn_all_random"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="랜덤 번호 생성1"
                 android:onClick="@{()->viewModel.createWinningNumberAll()}"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="1~5"
-                android:text="@={viewModel.createCnt}"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -78,6 +91,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="램덤 함수 6000번 돌려 추출된 수들 중 가장 많이 추출된 6개의 수를 보여줌"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_select_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번호 선택"
+                android:onClick="@{()->view.test()}"/>
+
         </LinearLayout>
 
     </LinearLayout>

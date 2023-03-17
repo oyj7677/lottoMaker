@@ -1,12 +1,17 @@
 package com.example.lottomaker
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import com.example.lottomaker.SelectNumberDialog.Companion.BUNDLE_KEY
+import com.example.lottomaker.SelectNumberDialog.Companion.RESULT_KEY
 import com.example.lottomaker.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -23,6 +28,7 @@ class MainFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         // 뷰모델 바인딩도 안하고 쓰려고했네
         binding.viewModel = viewModel
+        binding.view = this
 
         // viewLifecycleOwner 라이프 사이클 때문에 사용된다. createView ~ destroyView 정리할 것.
         viewModel.arrWinningNumberList.observe(viewLifecycleOwner) { arrNumberList ->
@@ -56,7 +62,16 @@ class MainFragment : Fragment() {
 
         viewModel.initDatabase()
 
+        setFragmentResultListener(RESULT_KEY) { requestKey, bundle ->
+            val result = bundle.getIntegerArrayList(BUNDLE_KEY)
+            viewModel.createWinningNumberPart(result!!)
+        }
+
         return binding.root
+    }
+
+    fun test() {
+        SelectNumberDialog().show(requireFragmentManager(),"dialog")
     }
 
 }

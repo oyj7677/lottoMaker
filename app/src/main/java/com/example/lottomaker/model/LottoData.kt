@@ -1,4 +1,4 @@
-package com.example.lottomaker
+package com.example.lottomaker.model
 
 data class LottoData(
     var drwNo: Int,

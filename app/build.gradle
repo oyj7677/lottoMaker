@@ -90,4 +90,8 @@ dependencies {
 
     // 크롤링
     implementation 'org.jsoup:jsoup:1.15.4'
+
+    // test
+    testImplementation "io.mockk:mockk:1.11.0"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 }
