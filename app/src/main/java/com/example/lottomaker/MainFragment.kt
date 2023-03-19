@@ -1,11 +1,9 @@
 package com.example.lottomaker
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -70,8 +68,7 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    fun test() {
+    fun showSelectNumberDialog() {
         SelectNumberDialog().show(requireFragmentManager(),"dialog")
     }
-
 }

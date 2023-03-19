@@ -122,7 +122,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ currentRound ->
                 if(postRound != currentRound) {
-                    saveAllWinningNumber(postRound + 1, currentRound)
+                    saveAllWinningNumber(postRound, currentRound)
                 }
             },{
                 it.printStackTrace()
@@ -135,9 +135,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val api = client.create(LottoApi::class.java)
         val arr = arrayListOf<Observable<LottoData>>()
         val winningNumberList = arrayListOf<WinningNumber>()
-        var roundCnt = 1
+        var roundCnt = postRound + 1
 
-        for(i: Int in postRound + 1 .. currentRound) {
+        for(i: Int in roundCnt .. currentRound) {
             arr.add(api.getWinningNumber(i).toObservable())
         }
 
@@ -146,6 +146,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+
                 winningNumberList.add(WinningNumber(
                     round = roundCnt++,
                     winningNum1 = it.drwtNo1,

@@ -405,7 +405,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:onClick="@{()->view.finish()}"/>
+            android:onClick="@{()->view.finish()}"
+            android:text="선택 완료"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
