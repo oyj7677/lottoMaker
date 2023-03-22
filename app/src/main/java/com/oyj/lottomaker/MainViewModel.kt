@@ -1,14 +1,14 @@
-package com.example.lottomaker
+package com.oyj.lottomaker
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.lottomaker.model.LottoData
-import com.example.lottomaker.model.LottoDatabase
-import com.example.lottomaker.model.WinningNumber
-import com.example.lottomaker.retrofit.LottoApi
-import com.example.lottomaker.retrofit.RetrofitClient
+import com.oyj.lottomaker.model.LottoData
+import com.oyj.lottomaker.model.LottoDatabase
+import com.oyj.lottomaker.model.WinningNumber
+import com.oyj.lottomaker.retrofit.LottoApi
+import com.oyj.lottomaker.retrofit.RetrofitClient
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -147,7 +147,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
 
-                winningNumberList.add(WinningNumber(
+                winningNumberList.add(
+                    WinningNumber(
                     round = roundCnt++,
                     winningNum1 = it.drwtNo1,
                     winningNum2 = it.drwtNo2,
@@ -155,7 +156,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     winningNum4 = it.drwtNo4,
                     winningNum5 = it.drwtNo5,
                     winningNum6 = it.drwtNo6,
-                ))
+                )
+                )
             },{
                 it.printStackTrace()
             },{

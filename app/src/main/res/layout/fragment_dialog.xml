@@ -4,11 +4,11 @@
     <data>
     <variable
         name="viewModel"
-        type="com.example.lottomaker.SelectNumberDialogViewModel"/>
+        type="com.oyj.lottomaker.SelectNumberDialogViewModel"/>
 
         <variable
             name="view"
-            type="com.example.lottomaker.SelectNumberDialog" />
+            type="com.oyj.lottomaker.SelectNumberDialog" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

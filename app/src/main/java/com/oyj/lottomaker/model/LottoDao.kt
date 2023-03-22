@@ -1,4 +1,4 @@
-package com.example.lottomaker.model
+package com.oyj.lottomaker.model
 
 import androidx.room.Dao
 import androidx.room.Insert

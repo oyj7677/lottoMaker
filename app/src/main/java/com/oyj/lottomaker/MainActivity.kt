@@ -1,8 +1,9 @@
-package com.example.lottomaker
+package com.oyj.lottomaker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lottomaker.util.ActivityUtils
+
+import com.oyj.lottomaker.util.ActivityUtils
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.lottomaker.model
+package com.oyj.lottomaker.model
 
 import android.content.Context
 import androidx.room.Database

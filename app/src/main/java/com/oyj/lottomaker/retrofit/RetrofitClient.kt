@@ -1,4 +1,4 @@
-package com.example.lottomaker.retrofit
+package com.oyj.lottomaker.retrofit
 
 import com.google.gson.GsonBuilder
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory

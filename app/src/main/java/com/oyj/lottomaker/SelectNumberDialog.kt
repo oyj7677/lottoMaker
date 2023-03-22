@@ -1,4 +1,4 @@
-package com.example.lottomaker
+package com.oyj.lottomaker
 
 import android.content.Context
 import android.graphics.Point
@@ -12,7 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import com.example.lottomaker.databinding.FragmentDialogBinding
+import com.oyj.lottomaker.databinding.FragmentDialogBinding
 
 class SelectNumberDialog: DialogFragment() {
 

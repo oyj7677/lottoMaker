@@ -7,17 +7,17 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.lottomaker.MainViewModel"/>
+            type="com.oyj.lottomaker.MainViewModel"/>
 
         <variable
             name="view"
-            type="com.example.lottomaker.MainFragment"/>
+            type="com.oyj.lottomaker.MainFragment"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    tools:context="com.oyj.lottomaker.MainFragment">
 
     <LinearLayout
         android:id="@+id/layout_numbers"

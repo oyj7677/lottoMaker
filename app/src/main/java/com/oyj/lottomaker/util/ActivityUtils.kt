@@ -1,4 +1,4 @@
-package com.example.lottomaker.util
+package com.oyj.lottomaker.util
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

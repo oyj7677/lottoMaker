@@ -1,4 +1,4 @@
-package com.example.lottomaker
+package com.oyj.lottomaker
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import com.example.lottomaker.SelectNumberDialog.Companion.BUNDLE_KEY
-import com.example.lottomaker.SelectNumberDialog.Companion.RESULT_KEY
-import com.example.lottomaker.databinding.FragmentMainBinding
+import com.oyj.lottomaker.SelectNumberDialog.Companion.BUNDLE_KEY
+import com.oyj.lottomaker.SelectNumberDialog.Companion.RESULT_KEY
+import com.oyj.lottomaker.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 

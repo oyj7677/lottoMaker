@@ -1,4 +1,4 @@
-package com.example.lottomaker
+package com.oyj.lottomaker
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

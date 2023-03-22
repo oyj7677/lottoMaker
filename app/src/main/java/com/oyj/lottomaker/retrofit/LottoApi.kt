@@ -1,6 +1,6 @@
-package com.example.lottomaker.retrofit
+package com.oyj.lottomaker.retrofit
 
-import com.example.lottomaker.model.LottoData
+import com.oyj.lottomaker.model.LottoData
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
